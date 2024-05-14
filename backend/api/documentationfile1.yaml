@@ -1,0 +1,3594 @@
+openapi: "3.0.0"
+info:
+  title: User API
+  version: "1.0.0"
+  description: API documentation for fabLab_backEnd_project #https://fablab-backend-api.onrender.com
+  contact:
+    name: imanariyo baptiste
+    email: "imanariyo@gmail.com"
+    url: "tel:0787795163"
+  description: "Phone: 0787795163"
+servers:
+  - url:  https://fablab-backend-api.onrender.com
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+  schemas:
+    TeamMember:
+      type: object
+      properties:
+        FULL_NAMES:
+          type: string
+        TITLE:
+          type: string
+        POSITION:
+          type: string
+        SOCIAL_MEDIAS:
+          type: string
+        EMAIL:
+          type: string
+        
+        mainImage:
+          type: string
+          format: binary
+      required:
+       
+        - FULL_NAMES
+        - TITLE
+        - POSITION
+        - EMAIL
+        - mainImage
+    SuccessResponse:
+      type: object
+      properties:
+        status:
+          type: string
+        message:
+          type: string
+    Error:
+      type: object
+      properties:
+        status:
+          type: string
+        message:
+          type: string  
+    Partner:
+      type: object
+      properties:
+        title:
+          type: string
+        description:
+          type: string
+        mainImage:
+          type: string
+          format: binary
+         
+        email:
+          type: string
+        helpsIn:
+          type: string
+      required:
+        - title
+        - description
+        - email
+        - helpsIn
+
+    SuccessResponse:
+      type: object
+      properties:
+        status:
+          type: string
+        message:
+          type: string
+
+    Error:
+      type: object
+      properties:
+        status:
+          type: string
+        message:
+          type: string      
+            
+
+    Portfolio:
+      type: object
+      properties:
+        _id:
+          type: string
+          example: "607c92f5381a2c01c8e76a5a"
+        portfolioCategory:
+          type: string
+          example: "portfolio"
+        portfolioImages:
+          type: array
+          items:
+            type: string
+          example:
+            - "https://example.com/image1.jpg"
+            - "https://example.com/image2.jpg"
+    Contact:
+      type: "object"
+      properties:
+        name:
+          type: "string"
+        email:
+          type: "string"
+        subject:
+          type: "string"
+        message:
+          type: "string"
+        
+    SuccessResponse:
+      type: "object"
+      properties:
+        status:
+          type: "string"
+          example: "success"
+        message:
+          type: "string"
+          example: "Operation completed successfully"
+    Error:
+      type: "object"
+      properties:
+        status:
+          type: "string"
+          example: "error"
+        message:
+          type: "string"
+          example: "Resource not found or Internal Server Error" 
+    application:
+     type: object
+     properties:
+       desccription:
+         type: string
+         description: Description of the application
+       fullNames:
+         type: string
+         description: Full name of the applicant
+         example: "John Doe"
+       images:
+         type: array
+         items:
+           type: string
+         description: Array of image URLs
+       email:
+         type: string
+         description: Email of the applicant
+         example: "john.doe@example.com"
+       phoneNumber:
+         type: string
+         description: Phone number of the applicant
+         example: "1234567890"
+       yearOfBirth:
+         type: number
+         description: Year of birth of the applicant
+         example: 1990
+       programName:
+         type: string
+         description: Name of the program
+         example: "Computer Science"
+       gender:
+         type: string
+         enum: ['Male', 'Female']
+         description: Gender of the applicant
+         example: "Male"
+       ageRange:
+         type: string
+         enum: ['15-25', '26-35', 'Above 36']
+         description: Age range of the applicant
+         example: "26-35"
+       province:
+         type: string
+         enum: ['Eastern', 'Western', 'Southern', 'Northern']
+         description: Province of the applicant
+         example: "Eastern"
+       district:
+         type: string
+         description: District of the applicant
+         example: "Some District"
+       sector:
+         type: string
+         description: Sector of the applicant
+         example: "Some Sector"
+       village:
+         type: string
+         description: Village of the applicant
+         example: "Some Village"
+       educationalLevel:
+         type: string
+         enum: ['High School', 'Undergraduate', 'Bachelor', 'Masters', 'PhD', 'Others']
+         description: Educational level of the applicant
+         example: "Masters"
+       certificateOfRecentlyEducationLevel:
+         type: string
+         description: Certificate of the recently completed education level
+       jobStatus:
+         type: string
+         enum: ['Employed', 'Self-employed', 'Unemployed', 'Student']
+         description: Job status of the applicant
+         example: "Employed"
+       fieldOfStudy:
+         type: string
+         description: Field of study of the applicant
+         example: "Computer Science"
+       previouslyParticipated:
+         type: string
+         enum: ['Yes', 'No']
+         description: Whether the applicant has previously participated or not 
+         example: "No"
+       innovationDescription:
+         type: string
+         description: Description of the innovation
+         example: "A brief description of the innovation."
+       businessIdeaFile:
+         type: string
+         description: Business idea file
+       consent:
+         type: string
+         enum: ['Yes', 'No']
+         description: Consent from the applicant
+         example: "Yes"
+       howDidYouheardofus:
+         type: string
+         description: Source through which the applicant heard about the program
+         example: "Online Advertisement"
+       isAllowed:
+         type: string
+         enum: ['admitted', 'noAdmitted', 'addedOnwaitingList']
+         default: "noAdmitted"
+         description: Status of the application
+       reasonForIsAllowedDEsicion:
+         type: string
+          description: Reason for the decision on the application
+    Program:
+       type: "object"
+       properties:
+         programName:
+           type: "string"
+           description: "Name of the program"
+           example: "Computer Science"
+         description:
+           type: "string"
+           description: "Description of the program"
+           example: "A comprehensive program covering various aspects of computer science."
+         images:
+           type: "array"
+           items:
+             type: "string"
+           description: "Array of image URLs for the program"
+           example:
+             - "https://example.com/image1.jpg"
+             - "https://example.com/image2.jpg"
+         mainImage:
+           type: "string"
+           description: "Main image URL for the program"
+           example: "https://example.com/main-image.jpg"
+        
+         duration:
+           type: "number"
+           description: "Duration of the program in weeks"
+           example: 4
+         startDate:
+           type: "string"
+           format: "date"
+           description: "Start date of the program"
+           example: "2023-01-01"
+         endDate:
+           type: "string"
+           format: "date"
+           description: "End date of the program"
+           example: "2023-12-31"
+         prerequisites:
+           type: "string"
+           description: "Prerequisites for the program"
+           example: "Basic knowledge of programming"
+         level:
+           type: "string"
+           description: "Level of the program"
+           example: "Intermediate"
+         creditHours:
+           type: "number"
+           description: "Credit hours for the program"
+           example: 120
+         fee:
+           type: "number"
+           description: "Fee for the program"
+           example: 5000
+         location:
+           type: "string"
+           description: "Location of the program"
+           example: "University Campus"
+         enrollmentLimit:
+           type: "number"
+           description: "Enrollment limit for the program"
+           example: 100
+         status:
+           type: "string"
+           enum:
+             - "open"
+             - "closed"
+           description: "Status of the program"
+           example: "open" 
+paths:
+  /program/getAllPrograms:
+    get:
+      summary: "Get all programs"
+      tags: [program]
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: "List of available programs"
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    description: "Success message"
+                    example: "List of available programs retrieved successfully"
+                  data:
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/Program"
+        '404':
+          description: "No programs found"
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    description: "Error message"
+                    example: "No programs found"
+        '500':
+          description: "Internal Server Error"
+  /program/createProgram:
+    post:
+      summary: "Create a new program"
+      tags: [program]
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                programName:
+                  type: string
+                  description: Name of the program
+                  example: "Computer Science"
+                description:
+                  type: string
+                  description: Description of the program
+                  example: "A comprehensive program covering various aspects of computer science."
+                mainImage:
+                  type: string
+                  format: binary
+                  description: Main image file for the program
+                  example: "/path/to/main-image.jpg"
+                images:
+                  type: array
+                  items:
+                    type: string
+                    format: binary
+                  description: Array of image files for the program
+                  example:
+                    - "/path/to/image1.jpg"
+                    - "/path/to/image2.jpg"
+                applicants:
+                  type: "array"
+                  items:
+                    type: "string"
+                  description: "Array of applicant names"
+                  example:
+                    - "Applicant1"
+                    - "Applicant2"
+                duration:
+                  type: number
+                  description: Duration of the program in weeks
+                  example: 4
+                startDate:
+                  type: string
+                  format: date
+                  description: Start date of the program
+                  example: "2023-01-01"
+                endDate:
+                  type: string
+                  format: date
+                  description: End date of the program
+                  example: "2023-12-31"
+                prerequisites:
+                  type: string
+                  description: Prerequisites for the program
+                  example: "Basic knowledge of programming"
+                level:
+                  type: string
+                  description: Level of the program
+                  example: "Intermediate"
+                creditHours:
+                  type: number
+                  description: Credit hours for the program
+                  example: 120
+                fee:
+                  type: number
+                  description: Fee for the program
+                  example: 5000
+                location:
+                  type: string
+                  description: Location of the program
+                  example: "University Campus"
+                enrollmentLimit:
+                  type: number
+                  description: Enrollment limit for the program
+      responses:
+        '200':
+          description: "Program created successfully"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Program"
+        '404':
+          description: "Event failed to add"
+          content:
+            application/json:
+                schema:
+                  $ref: "#/components/schemas/Program"
+  
+            application/json:
+                schema:
+                  $ref: "#/components/schemas/Program"
+  
+  /program/updateProgram/{id}:
+    patch:
+      summary: "Update an existing program"
+      tags: [program]
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+          description: ID of the program for which the update is going to take place
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                programName:
+                  type: string
+                  description: Name of the program
+                  example: "Computer Science"
+                description:
+                  type: string
+                  description: Description of the program
+                  example: "A comprehensive program covering various aspects of computer science."
+                mainImage:
+                  type: string
+                  format: binary
+                  description: Main image file for the program
+                  example: "/path/to/main-image.jpg"
+                images:
+                  type: array
+                  items:
+                    type: string
+                    format: binary
+                  description: Array of image files for the program
+                  example:
+                    - "/path/to/image1.jpg"
+                    - "/path/to/image2.jpg"
+                applicants:
+                  type: "array"
+                  items:
+                    type: "string"
+                  description: "Array of applicant names"
+                  example:
+                    - "Applicant1"
+                    - "Applicant2"
+                duration:
+                  type: number
+                  description: Duration of the program in weeks
+                  example: 4
+                startDate:
+                  type: string
+                  format: date
+                  description: Start date of the program
+                  example: "2023-01-01"
+                endDate:
+                  type: string
+                  format: date
+                  description: End date of the program
+                  example: "2023-12-31"
+                prerequisites:
+                  type: string
+                  description: Prerequisites for the program
+                  example: "Basic knowledge of programming"
+                level:
+                  type: string
+                  description: Level of the program
+                  example: "Intermediate"
+                creditHours:
+                  type: number
+                  description: Credit hours for the program
+                  example: 120
+                fee:
+                  type: number
+                  description: Fee for the program
+                  example: 5000
+                location:
+                  type: string
+                  description: Location of the program
+                  example: "University Campus"
+                enrollmentLimit:
+                  type: number
+                  description: Enrollment limit for the program
+      responses:
+        '200':
+          description: "Program created successfully"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Program"
+        '404':
+          description: "Event failed to add"
+          content:
+            application/json:
+                schema:
+                  $ref: "#/components/schemas/Program"
+  
+            application/json:
+                schema:
+                    $ref: "#/components/schemas/Program"
+  /program/deleteProgramById/{programID}:
+    delete:
+      summary: "Delete a program by ID"
+      tags: [program]
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: programID
+          in: path
+          required: true
+          schema:
+            type: string
+          description: ID of the program to be deleted
+      responses:
+        '200':
+          description: "Program deleted successfully"
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    description: "Success message"
+                    example: "The program has been deleted successfully"
+                  data:
+                    $ref: "#/components/schemas/Program"
+        '404':
+          description: "Program not found"
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    description: "Error message"
+                    example: "Program not found"
+        '500':
+          description: "Internal Server Error"
+
+  /program/getProgramById/{id}:
+    get:
+      summary: "Get a program by ID"
+      tags: [program]
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+          description: ID of the program to be retrieved
+      responses:
+        '200':
+          description: "Program found successfully"
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    description: "Success message"
+                    example: "Program found successfully"
+                  data:
+                    $ref: "#/components/schemas/Program"
+        '404':
+          description: "Program not found"
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    description: "Error message"
+                    example: "Program not found"
+        '500':
+          description: "Internal Server Error"
+                  
+  /program/closeProgram/{id}:
+    patch:
+      summary: "Close a program"
+      tags: [program]
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+          description: ID of the program to be closed
+      responses:
+        '200':
+          description: "Program closed successfully"
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    description: "Success message"
+                    example: "The program has been closed successfully"
+        '404':
+          description: "Program not found"
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    description: "Error message"
+                    example: "Program not found"
+        '500':
+          description: "Internal Server Error"
+          
+  /program/openProgram/{id}:
+    patch:
+      summary: "Open a program"
+      tags: [program]
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+          description: ID of the program to be opened
+      responses:
+        '200':
+          description: "Program opened successfully"
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    description: "Success message"
+                    example: "The program has been opened successfully"
+        '404':
+          description: "Program not found"
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    description: "Error message"
+                    example: "Program not found"
+        '500':
+          description: "Internal Server Error"      
+  /apply/applyFor/{id}:
+    post:
+      summary: "Submit a new application for a program"
+      tags: [application]
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+          description: ID of the program for which the application is submitted
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                fullNames:
+                  type: string
+                  description: Full name of the applicant
+                  example: "John Doe"
+                email:
+                  type: string
+                  description: Email of the applicant
+                  example: "john.doe@example.com"
+                phoneNumber:
+                  type: string
+                  description: Phone number of the applicant
+                  example: "1234567890"
+                yearOfBirth:
+                  type: number
+                  description: Year of birth of the applicant
+                  example: 1990
+                programName:
+                  type: string
+                  description: Name of the program
+                  example: "Computer Science"
+                gender:
+                  type: string
+                  enum: ['Male', 'Female']
+                  description: Gender of the applicant
+                  example: "Male"
+                ageRange:
+                  type: string
+                  enum: ['15-25', '26-35', 'Above 36']
+                  description: Age range of the applicant
+                  example: "26-35"
+                province:
+                  type: string
+                  enum: ['Eastern', 'Western', 'Southern', 'Northern']
+                  description: Province of the applicant
+                  example: "Eastern"
+                district:
+                  type: string
+                  description: District of the applicant
+                  example: "Some District"
+                sector:
+                  type: string
+                  description: Sector of the applicant
+                  example: "Some Sector"
+                village:
+                  type: string
+                  description: Village of the applicant
+                  example: "Some Village"
+                educationalLevel:
+                  type: string
+                  enum: ['High School', 'Undergraduate', 'Bachelor', 'Masters', 'PhD', 'Others']
+                  description: Educational level of the applicant
+                  example: "Masters"
+                certificateOfRecentlyEducationLevel:
+                  type: string
+                  description: Certificate of the recently completed education level
+                  format: binary
+                  example: "/path/to/certificate.pdf"
+                jobStatus:
+                  type: string
+                  enum: ['Employed', 'Self-employed', 'Unemployed', 'Student']
+                  description: Job status of the applicant
+                  example: "Employed"
+                fieldOfStudy:
+                  type: string
+                  description: Field of study of the applicant
+                  example: "Computer Science"
+                previouslyParticipated:
+                  type: string
+                  enum: ['Yes', 'No']
+                  description: Whether the applicant has previously participated
+                  example: "No"
+                innovationDescription:
+                  type: string
+                  description: Description of the innovation
+                  example: "A brief description of the innovation."
+                businessIdeaFile:
+                  type: string
+                  format: binary
+                  description: Business idea file
+                  example: "/path/to/business_idea.pdf"
+                consent:
+                  type: string
+                  enum: ['Yes', 'No']
+                  description: Consent from the applicant
+                  example: "Yes"
+                howDidYouheardofus:
+                  type: string
+                  description: Source through which the applicant heard about the program
+                  example: "Online Advertisement"
+              required:
+                 - fullNames
+                 - email
+                 - phoneNumber
+                 - yearOfBirth
+                 - gender
+                 - ageRange
+                 - province
+                 - district
+                 - sector
+                 - village
+                 - educationalLevel
+                 - jobStatus
+                 - previouslyParticipated
+                 - innovationDescription
+                 - consent
+                 - howDidYouheardofus
+      responses:
+        '200':
+          description: "Application submitted successfully"
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    description: "Success message"
+                    example: "Your application has been received successfully"
+                  applicantInfo:
+                    $ref: "#/components/schemas/application"
+        '409':
+          description: "Conflict - Applicant already applied"
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    description: "Error message"
+                    example: "john.doe@example.com already applied. Check your email for the confirmation."
+        '500':
+          description: "Internal Server Error"
+  /apply/getAll/addedOnwaitingList/{addedOnwaitingList}:
+    get:
+      summary: Get applicants based on addedOnwaitingList status
+      tags: [application]
+      security:
+        - bearerAuth: []
+      operationId: getAllApplicants
+      parameters:
+        - name: addedOnwaitingList
+          in: path
+          required: true
+          schema:
+            type: string
+            enum: ['admitted', 'noAdmitted', 'addedOnwaitingList']
+          description: Status of applicants
+      responses:
+        '200':
+          description: Applicants retrieved successfully
+        '404':
+          description: No data found
+        '500':
+          description: Internal Server Error
+  /apply/getAll/admitted/{admitted}:
+    get:
+      summary: Get applicants based on admitted status
+      tags: [application]
+      security:
+        - bearerAuth: []
+      operationId: getAllApplicants
+      parameters:
+        - name: admitted
+          in: path
+          required: true
+          schema:
+            type: string
+            enum: ['admitted', 'noAdmitted', 'addedOnwaitingList']
+          description: Status of applicants
+      responses:
+        '200':
+          description: Applicants retrieved successfully
+        '404':
+          description: No data found
+        '500':
+          description: Internal Server Error
+
+  /apply/getAll/noAdmitted/{noAdmitted}:
+    get:
+      summary: Get applicants based on noAdmitted status
+      tags: [application]
+      security:
+        - bearerAuth: []
+      operationId: getAllApplicants
+      parameters:
+        - name: noAdmitted
+          in: path
+          required: true
+          schema:
+            type: string
+            enum: ['admitted', 'noAdmitted', 'addedOnwaitingList']
+          description: Status of applicants
+      responses:
+        '200':
+          description: Applicants retrieved successfully
+        '404':
+          description: No data found
+        '500':
+          description: Internal Server Error
+
+  /apply/deteteById/{id}:
+    delete:
+      summary: Delete an application by ID
+      tags: [application]
+      security:
+        - bearerAuth: []
+      operationId: deleteApplication
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+          description: ID of the application to delete
+      responses:
+        '200':
+          description: Application deleted successfully
+        '404':
+          description: No applicant with the provided ID found
+        '500':
+          description: Internal Server Error
+
+  /apply/approveApplicationById/{id}:
+    patch:
+      summary: Approve an application by ID
+      tags: [application]
+      security:
+        - bearerAuth: []
+      security:
+        - bearerAuth: []
+      operationId: approveApplication
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+          description: ID of the application to approve
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                message:
+                  type: string
+                  description: Approval message
+                details:
+                  type: string
+                  description: Additional details    
+      responses:
+        '200':
+          description: Application approved successfully
+        '404':
+          description: No applicant with the provided ID found
+        '500':
+          description: Internal Server Error
+
+  /apply/addOnWaitingListById/{id}:
+    patch:
+      summary: Add an application to the waiting list by ID
+      tags: [application]
+      security:
+        - bearerAuth: []
+      operationId: onWaitingList
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+          description: ID of the application to add to the waiting list
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                message:
+                  type: string
+                  description: Waiting list message
+                details:
+                  type: string
+                  description: Additional details
+      responses:
+        '200':
+          description: Application added to the waiting list successfully
+        '404':
+          description: No applicant with the provided ID found
+        '500':
+          description: Internal Server Error
+
+  /apply/rejectById/{id}:
+    patch:
+      summary: Reject an application by ID
+      tags: [application]
+      security:
+        - bearerAuth: []
+      operationId: rejectApplication
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+          description: ID of the application to reject
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                message:
+                  type: string
+                  description: Rejection message
+                details:
+                  type: string
+                  description: Additional details    
+      responses:
+        '200':
+          description: Application rejected successfully
+        '404':
+          description: No applicant with the provided ID found
+        '500':
+          description: Internal Server Error
+
+
+  /auth/getAllUsers:
+    get:
+      summary: 'Get all users'
+      tags:
+        - 'authentication'
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: 'Users retrieved successfully'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    description: 'Success message'
+                    example: 'Users retrieved successfully'
+                  users:
+                    type: array
+                    description: 'List of users'
+                    items:
+                      type: object
+                      properties:
+                        email:
+                          type: string
+                          description: 'User email'
+                        location:
+                          type: string
+                          description: 'User location'
+                        fullname:
+                          type: string
+                          description: 'User full name'
+                        phone:
+                          type: string
+                          description: 'User phone number'
+                        role:
+                          type: string
+                          description: 'User role'
+        '404':
+          description: 'No users found'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    description: 'Error message'
+                    example: 'No users found'
+        '500':
+          description: 'Internal Server Error'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    description: 'Error message'
+                    example: 'Internal Server Error'
+  /auth/updateUserById/{id}:
+    patch:
+      summary: "Update a user by ID"
+      tags:
+        - 'authentication'
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+          description: ID of the user to be updated
+        - name: updatedUserData
+          in: body
+          required: true
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - fullNames
+                  - email
+                  - password
+                  - phoneNumber
+                  - location
+                  - role
+                properties:
+                  fullNames:
+                    type: string
+                    example: "John Doe"
+                  email:
+                    type: string
+                    example: "imanariyobaptiste@gmail.com"
+                  password:
+                    type: string
+                    example: "123"
+                  phoneNumber:
+                    type: number
+                    example: 1234567890
+                  location:
+                    type: string
+                    example: "City, Country"
+                  role:
+                    type: string
+                    example: "user"
+      responses:
+        '200':
+          description: User updated successfully
+        '500':
+          description: Internal Server Error
+  /auth/addadminbyid/{id}:
+    patch:
+      summary: "make a user as addmin by ID"
+      tags:
+        - 'authentication'
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+          description: ID of the user to bemade as admin
+        - name: updatedUserData
+          in: body
+          required: true
+        
+      responses:
+        '200':
+          description: User updated successfully
+        '500':
+          description: Internal Server Error
+  /auth/maketheadminasuser/{id}:
+    patch:
+      summary: "maketheadminasuser a user by ID"
+      tags:
+        - 'authentication'
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+          description: ID of the user to be updated
+        - name: updatedUserData
+          in: body
+          required: true
+          
+      responses:
+        '200':
+          description: User updated successfully
+        '500':
+          description: Internal Server Error
+  /apply/getAll:
+    get:
+      summary: Get all applicants
+      tags: [application]
+      security:
+        - bearerAuth: []
+      operationId: getAllApplicants
+      responses:
+        '200':
+          description: Applicants retrieved successfully
+        '404':
+          description: No data found
+        '500':
+          description: Internal Server Error
+
+  /apply/getApplicationById/{id}:
+    get:
+      summary: Get an application by ID
+      tags: [application]
+      operationId: getEventApplicationById
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+          description: ID of the application to retrieve
+      responses:
+        '200':
+          description: Application retrieved successfully
+        '404':
+          description: No applicant with the provided ID found
+        '500':
+          description: Internal Server Error
+        
+    
+  
+  /auth/deleteUserById/{id}:
+    delete:
+      summary: "Delete a user by ID"
+      tags:
+        - 'authentication'
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+          description: ID of the user to be deleted
+      responses:
+        '200':
+          description: "User deleted successfully"
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    description: "Success message"
+                    example: "User deleted successfully"
+                  
+        '404':
+          description: "User not found"
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    description: "Error message"
+                    example: "User not found"
+        '500':
+          description: "Internal Server Error"
+            
+  /auth/signup:
+    post:
+      summary: User Signup
+      tags: [authentication]
+      operationId: signup
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - fullNames
+                - email
+                - password
+                - phoneNumber
+                - location
+                - role
+              properties:
+                fullNames:
+                  type: string
+                  example: "John Doe"
+                email:
+                  type: string
+                  example: "imanariyobaptiste@gmail.com"
+                password:
+                  type: string
+                  example: "123"
+                phoneNumber:
+                  type: number
+                  example: 1234567890
+                location:
+                  type: string
+                  example: "City, Country"
+                role:
+                  type: string
+                  example: "user"
+      responses:
+        '200':
+          description: User registered successfully
+        '500':
+          description: Internal Server Error
+
+  /auth/login:
+    post:
+      summary: User Login
+      tags: [authentication]
+      operationId: login
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - email
+                - password
+              properties:
+                email:
+                  type: string
+                  example: "imanariyobaptiste@gmail.com"
+                password:
+                  type: string
+                  example: "123"
+      responses:
+        '200':
+          description: User logged in successfully
+        '401':
+          description: Unauthorized - Invalid credentials
+        '500':
+          description: Internal Server Error
+
+  /auth/forget:
+    post:
+      summary: Generate and Send OTP for Password Reset
+      tags: [authentication]
+      security:
+        - bearerAuth: []
+      operationId: generateAndSendOTP
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - email
+              properties:
+                email:
+                  type: string
+                  example: "imanariyobaptiste@gmail.com"
+      responses:
+        '200':
+          description: OTP generated and sent successfully
+        '404':
+          description: User not found
+        '500':
+          description: Internal Server Error
+
+  /auth/reset:
+    post:
+      summary: Verify OTP and Update Password
+      tags: [authentication]
+      security:
+        - bearerAuth: []
+      operationId: verifyOTPAndUpdatePassword
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - email
+                - otp
+                - newpassword
+              properties:
+                email:
+                  type: string
+                  example: "imanariyobaptiste@gmail.com"
+                otp:
+                  type: string
+                  example: "4225261"
+                newpassword:
+                  type: string
+                  example: "123"
+      responses:
+        '200':
+          description: Password updated successfully
+        '404':
+          description: User not found
+        '401':
+          description: Unauthorized - Invalid OTP
+        '500':
+          description: Internal Server Error
+
+  /auth/change:
+    post:
+      summary: Change Password (Authenticated Route)
+      tags: [authentication]
+      security:
+        - bearerAuth: []
+      operationId: changepassword
+      parameters:
+        - name: Authorization
+          in: header
+          description: JWT token obtained after user login
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - currentpassword
+                - newpassword
+              properties:
+                currentpassword:
+                  type: string
+                  example: "123"
+                newpassword:
+                  type: string
+                  example: "123"
+      responses:
+        '200':
+          description: Password changed successfully
+        '401':
+          description: Unauthorized - Invalid token
+        '500':
+          description: Internal Server Error
+  /event/createEvent:
+    post:
+      summary: 'Create Event'
+      tags:
+        - 'Event'
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                mainImage:
+                  type: string
+                  format: binary
+                  description: 'Main image file for the event'
+                  example: '/path/to/main-image.jpg'  # Adjust the example path
+                images:
+                  type: array
+                  items:
+                    type: string
+                    format: binary
+                  description: 'Array of image files for the event'
+                  example:
+                    - '/path/to/image1.jpg'
+                    - '/path/to/image2.jpg'
+                eventName:
+                  type: string
+                  description: 'Name of the event'
+                  example: 'Sample Event'
+                eventDescription:
+                  type: string
+                  description: 'Description of the event'
+                  example: 'A brief description of the event'
+                eventDate:
+                  type: string
+                   |#format: date
+                  description: 'Date of the event when it will be taking place'
+                  example: '2023-01-0'
+                location:
+                  type: string
+                  description: 'Location of the event'
+                  example: 'Sample Location'
+                from:
+                  type: string
+                  description: 'Registration starting date'
+                  example: '2022-12-15'
+                to:
+                  type: string
+                  description: 'Registration deadline for the event'
+                  example: '2023-12-15' 
+                eventStatus:
+                  type: string
+                  description: 'is event closed or opened'
+                  default: "closed"
+                 
+      responses:
+        '201':
+          description: 'Event created successfully'
+  
+    
+  /event/getAllEvents:
+    get:
+      summary: 'Get All Events'
+      tags:
+        - 'Event'
+      security:
+        - bearerAuth: []  
+      responses:
+        '200':
+          description: 'List of events'
+
+  /event/getEventById/{eventId}:
+    get:
+      summary: 'Get Event by ID'
+      tags:
+        - 'Event'
+      security:
+        - bearerAuth: []  
+      parameters:
+        - name: eventId
+          in: path
+          type: string
+          required: true
+          description: 'ID of the event'
+      responses:
+        '200':
+          description: 'Event retrieved successfully'
+
+  /event/updateEventById/{eventId}:
+    patch:
+      summary: 'update event'
+      tags:
+        - 'Event'
+      security:
+        - bearerAuth: []  
+      parameters:
+        - name: eventId
+          in: path
+          type: string
+          required: true
+          description: 'ID of the event'  
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                mainImage:
+                  type: string
+                  format: binary
+                  description: 'Main image file for the event'
+                  example: '/path/to/main-image.jpg'  # Adjust the example path
+                images:
+                  type: array
+                  items:
+                    type: string
+                    format: binary
+                  description: 'Array of image files for the event'
+                  example:
+                    - '/path/to/image1.jpg'
+                    - '/path/to/image2.jpg'
+                eventName:
+                  type: string
+                  description: 'Name of the event'
+                  example: 'Sample Event'
+                eventDescription:
+                  type: string
+                  description: 'Description of the event'
+                  example: 'A brief description of the event'
+                eventDate:
+                  type: string
+                  format: date
+                  description: 'Date of the event'
+                  example: '2023-01-01'
+                location:
+                  type: string
+                  description: 'Location of the event'
+                  example: 'Sample Location'
+                location:
+                  type: string
+                  description: 'Location of the event'
+                  example: 'Sample Location'
+                from:
+                  type: string
+                  description: 'Registration date starting for the event'
+                  example: '2022-12-15'
+                
+                to:
+                  type: string
+                  description: 'Registration deadline for the event'
+                  example: '2022-12-15'    
+      responses:
+        '201':
+          description: 'Event updated successfully'
+
+  /event/deleteEventById/{eventId}:
+    delete:
+      summary: 'Delete Event by ID'
+      tags:
+        - 'Event'
+      security:
+        - bearerAuth: []  
+      parameters:
+        - name: eventId
+          in: path
+          type: string
+          required: true
+          description: 'ID of the event'
+      responses:
+        '200':
+          description: 'Event deleted successfully'
+
+  /event/deleteManyEventsByDate/{startDate}:
+    delete:
+      summary: 'Delete Many Events by Date'
+      tags:
+        - 'Event'
+      security:
+        - bearerAuth: []  
+      parameters:
+        - name: startDate
+          in: path
+          type: string
+          required: true
+          description: 'Start date for deleting events'
+      responses:
+        '200':
+          description: 'Events deleted successfully'
+
+  /event/closeEventById/{eventId}:
+    patch:
+      summary: 'Close Event by ID'
+      tags:
+        - 'Event'
+      security:
+        - bearerAuth: []  
+      parameters:
+        - name: eventId
+          in: path
+          type: string
+          required: true
+          description: 'ID of the event'
+      responses:
+        '200':
+          description: 'Event closed successfully'
+
+  /event/openEventById/{eventId}:
+    patch:
+      summary: 'Open Event by ID'
+      tags:
+        - 'Event'
+      security:
+        - bearerAuth: []  
+      parameters:
+        - name: eventId
+          in: path
+          type: string
+          required: true
+          description: 'ID of the event'
+      responses:
+        '200':
+          description: 'Event opened successfully'
+  /testmony/getAllTestimonials:
+    get:
+      summary: "Get all testimonials"
+      tags:
+        - 'Testimonials'
+      security:
+        - bearerAuth: []  
+      responses:
+        '200':
+          description: "Testimonials retrieved successfully"
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    description: "Success status"
+                    example: "success"
+                  message:
+                    type: string
+                    description: "Success message"
+                    example: "All testimonials retrieved successfully"
+                  data:
+                    type: array
+                    description: "Array of testimonials"
+                    
+
+  /testmony/getTestimonialById/{id}:
+    get:
+      summary: "Get testimonial by ID"
+      tags:
+        - 'Testimonials'
+      security:
+        - bearerAuth: []  
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+          description: "ID of the testimonial to be retrieved"
+      responses:
+        '200':
+          description: "Testimonial retrieved successfully"
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    description: "Success status"
+                    example: "success"
+                  message:
+                    type: string
+                    description: "Success message"
+                    example: "Testimonial retrieved successfully"
+                  
+        '404':
+          description: "Testimonial not found"
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    description: "Error status"
+                    example: "error"
+                  message:
+                    type: string
+                    description: "Error message"
+                    example: "Testimonial not found"
+
+  /testmony/createTestimonial:
+    post:
+      summary: "Create testimonial"
+      tags:
+        - 'Testimonials'
+      security:
+        - bearerAuth: []  
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: "Name of the testimonial"
+                email:
+                  type: string
+                  description: "Email of the testimonial"
+                message:
+                  type: string
+                  description: "Message of the testimonial"
+                mainImage:
+                  type: string
+                  format: binary
+                  description: "Main image file for the testimonial"
+                gender:
+                  type: string
+                  description: "Gender of the testimonial"
+      responses:
+        '201':
+          description: "Testimonial created successfully"
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    description: "Success status"
+                    example: "success"
+                  message:
+                    type: string
+                    description: "Success message"
+                    example: "Testimonial created successfully"
+                  
+  /testmony/updateTestimonialById/{id}:
+    patch:
+      summary: "Update testimonial by ID"
+      tags:
+        - 'Testimonials'
+      security:
+        - bearerAuth: []  
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+          description: "ID of the testimonial to be updated"
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: "Name of the testimonial"
+                email:
+                  type: string
+                  description: "Email of the testimonial"
+                message:
+                  type: string
+                  description: "Message of the testimonial"
+                mainImage:
+                  type: string
+                  format: binary
+                  description: "Main image file for the testimonial"
+                gender:
+                  type: string
+                  description: "Gender of the testimonial"
+      responses:
+        '200':
+          description: "Testimonial updated successfully"
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    description: "Success status"
+                    example: "success"
+                  message:
+                    type: string
+                    description: "Success message"
+                    example: "Testimonial updated successfully"
+                  
+        '404':
+          description: "Testimonial not found"
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    description: "Error status"
+                    example: "error"
+                  message:
+                    type: string
+                    description: "Error message"
+                    example: "Testimonial not found"
+
+  /testmony/deleteTestimonialById/{id}:
+    delete:
+      summary: "Delete testimonial by ID"
+      tags:
+        - 'Testimonials'
+      security:
+        - bearerAuth: []  
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+          description: "ID of the testimonial to be deleted"
+      responses:
+        '204':
+          description: "Testimonial deleted successfully"
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    description: "Success status"
+                    example: "success"
+                  message:
+                    type: string
+                    description: "Success message"
+                    example: "Testimonial deleted successfully"
+                  data: null
+        '404':
+          description: "Testimonial not found"
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    description: "Error status"
+                    example: "error"
+                  message:
+                    type: string
+                    description: "Error message"
+                    example: "Testimonial not found"
+
+  /testmony/deleteAllTestimonials:
+    delete:
+      summary: "Delete all testimonials"
+      tags:
+        - 'Testimonials'
+      security:
+        - bearerAuth: []  
+      responses:
+        '204':
+          description: "All testimonials deleted successfully"
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    description: "Success status"
+                    example: "success"
+                  message:
+                    type: string
+                    description: "Success message"
+                    example: "All testimonials deleted successfully"
+                    data: null
+  /eventApplication/createEventApplication/{eventId}:
+    post:
+      summary: 'Create Event application'
+      tags:
+        - 'Event Application'
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: eventId
+          in: path
+          required: true
+          schema:
+            type: string
+            description: ID of the event for which the application is created
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+              
+                fullNames:
+                  type: string
+                  description: 'Name of the applicant'
+                email:
+                  type: string
+                  description: 'Email of the applicant'
+                phoneNUmber:
+                  type: number
+                  description: 'Phone number of the applicant'
+                address:
+                  type: string
+                  description: 'Address of the applicant'
+                country:
+                  type: string
+                  description: 'Country of the applicant'
+                title:
+                  type: string
+                  description: 'Title of the applicant'
+                jobTittle:
+                  type: string
+                  description: 'Job title of the applicant'
+                company:
+                  type: string
+                  description: 'Company of the applicant'
+                yearsOfExperience:
+                  type: number
+                  description: 'Years of experience of the applicant'
+                githubLink:
+                  type: string
+                  description: 'GitHub link of the applicant'
+                linkedInLink:
+                  type: string
+                  description: 'LinkedIn link of the applicant'
+                emergengeName:
+                  type: string
+                  description: 'Emergency contact name'
+                emergenceEmail:
+                  type: string
+                  description: 'Emergency contact email'
+                emergencePhoneNumber:
+                  type: number
+                  description: 'Emergency contact phone number'
+                expectation:
+                  type: string
+                  description: 'Expectation of the applicant'
+                
+      responses:
+        '201':
+          description: 'Event application created successfully'
+  
+        
+          
+  /eventApplication/getAllEventApplications:
+    get:
+      summary: "Get all event applications"
+      tags:
+        - 'Event Application'
+      security:
+        - bearerAuth: []  
+      responses:
+        '200':
+          description: "All event applications retrieved successfully"
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: "success"
+                  message:
+                    type: string
+                    example: "All event applications retrieved successfully"
+                  data:
+                    type: array
+                    
+  
+  /eventApplication/getEventApplicationById/{id}:
+    get:
+      summary: "Get event application by ID"
+      tags:
+        - 'Event Application'
+      security:
+        - bearerAuth: []  
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+          description: ID of the event application to be retrieved
+      responses:
+        '200':
+          description: "Event application retrieved successfully"
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: "success"
+                  message:
+                    type: string
+                    example: "Event application retrieved successfully"
+                  
+        '404':
+          description: "Event application not found"
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: "error"
+                  message:
+                    type: string
+                    example: "Event application not found"
+  
+  /eventApplication/updateEventApplicationById/{id}:
+    patch:
+      summary: 'update Event application'
+      tags:
+        - 'Event Application'
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+            description: ID of the event for which the application is created
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+              
+                fullNames:
+                  type: string
+                  description: 'Name of the applicant'
+                email:
+                  type: string
+                  description: 'Email of the applicant'
+                phoneNUmber:
+                  type: number
+                  description: 'Phone number of the applicant'
+                address:
+                  type: string
+                  description: 'Address of the applicant'
+                country:
+                  type: string
+                  description: 'Country of the applicant'
+                title:
+                  type: string
+                  description: 'Title of the applicant'
+                jobTittle:
+                  type: string
+                  description: 'Job title of the applicant'
+                company:
+                  type: string
+                  description: 'Company of the applicant'
+                yearsOfExperience:
+                  type: number
+                  description: 'Years of experience of the applicant'
+                githubLink:
+                  type: string
+                  description: 'GitHub link of the applicant'
+                linkedInLink:
+                  type: string
+                  description: 'LinkedIn link of the applicant'
+                emergengeName:
+                  type: string
+                  description: 'Emergency contact name'
+                emergenceEmail:
+                  type: string
+                  description: 'Emergency contact email'
+                emergencePhoneNumber:
+                  type: number
+                  description: 'Emergency contact phone number'
+                expectation:
+                  type: string
+                  description: 'Expectation of the applicant'
+                
+      responses:
+        '201':
+          description: 'Event application updated successfully'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: "success"
+                  message:
+                    type: string
+                    example: "Event application updated successfully"
+                  
+        '404':
+          description: "Event application not found"
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: "error"
+                  message:
+                    type: string
+                    example: "Event application not found"
+  
+  /eventApplication/deleteEventApplicationById/{id}:
+    delete:
+      summary: "Delete event application by ID"
+      tags:
+        - 'Event Application'
+      security:
+        - bearerAuth: []  
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+          description: ID of the event application to be deleted
+      responses:
+        '204':
+          description: "Event application deleted successfully"
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: "success"
+                  message:
+                    type: string
+                    example: "Event application deleted successfully"
+                  data: null
+        '404':
+          description: "Event application not found"
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: "error"
+                  message:
+                    type: string
+                    example: "Event application not found"
+
+  /machine/createMachine:
+    post:
+      summary: Create a machine
+      tags:
+        - Machine
+      security:
+        - bearerAuth: []  
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                mainImage:
+                  type: string
+                  format: binary
+                  description: 'Main image file for the machine'
+                machine_name:
+                  type: string
+                  description: 'Name of the machine'
+                machine_description:
+                  type: string
+                  description: 'Description of the machine'
+                price:
+                  type: number
+                  description: 'Price of the machine'
+                category:
+                  type: string
+                  description: 'Category of the machine'
+              required:
+                - mainImage
+                - machine_name
+                - machine_description
+                - price
+                - category
+      responses:
+        '201':
+          description: 'Machine created successfully'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: "success"
+                  message:
+                    type: string
+                    example: "Machine created successfully"
+                  
+
+  /machine/getAllMachines:
+    get:
+      summary: Get all machines
+      tags:
+        - Machine
+      security:
+        - bearerAuth: []  
+      responses:
+        '200':
+          description: 'All machines retrieved successfully'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: "success"
+                  message:
+                    type: string
+                    example: "All machines retrieved successfully"
+                  data:
+                    type: array
+                    
+  /machine/getMachineById/{id}:
+    get:
+      summary: Get machine by ID
+      tags:
+        - Machine
+      security:
+        - bearerAuth: []  
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: 'Machine retrieved successfully'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: "success"
+                  message:
+                    type: string
+                    example: "Machine retrieved successfully"
+                  
+        '404':
+          description: 'Machine not found'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: "error"
+                  message:
+                    type: string
+                    example: "Machine not found"
+
+  /machine/updateMachineById/{id}:
+    patch:
+      summary: Update machine by ID
+      tags:
+        - Machine
+      security:
+        - bearerAuth: []  
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                mainImage:
+                  type: string
+                  format: binary
+                  description: 'Main image file for the machine'
+                machine_name:
+                  type: string
+                  description: 'Name of the machine'
+                machine_description:
+                  type: string
+                  description: 'Description of the machine'
+                price:
+                  type: number
+                  description: 'Price of the machine'
+                category:
+                  type: string
+                  description: 'Category of the machine'
+              required:
+                - machine_name
+      responses:
+        '200':
+          description: 'Machine updated successfully'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: "success"
+                  message:
+                    type: string
+                    example: "Machine updated successfully"
+        '404':
+          description: 'Machine not found'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: "error"
+                  message:
+                    type: string
+                    example: "Machine not found"
+  
+  /machine/deleteMachineById/{id}:
+    delete:
+      summary: Delete machine by ID
+      tags:
+        - Machine
+      security:
+        - bearerAuth: []  
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '204':
+          description: 'Machine deleted successfully'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: "success"
+                  message:
+                    type: string
+                    example: "Machine deleted successfully"
+                  data: null
+        '404':
+          description: 'Machine not found'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: "error"
+                  message:
+                    type: string
+                    example: "Machine not found"
+
+  /machine/deleteAllMachines:
+    delete:
+      summary: Delete all machines
+      tags:
+        - Machine
+      security:
+        - bearerAuth: []  
+      responses:
+        '204':
+          description: 'All machines deleted successfully'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: "success"
+                  message:
+                    type: string
+                    example: "All machines deleted successfully"
+                  data: null 
+  /service/createService:
+    post:
+      summary: "Create a new service"
+      tags: [service]
+      security:
+        - bearerAuth: []
+      consumes:
+        - "multipart/form-data"
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                service_name:
+                  type: string
+                  description: Name of the service
+                  example: "Service Name"
+                mainImage:
+                  type: string
+                  format: binary
+                  description: Main image file for the service
+                  example: "/path/to/main-image.jpg"
+                description:
+                  type: string
+                  description: Description of the service
+                  example: "A detailed description of the service."
+              required:
+                - service_name
+                - mainImage
+      responses:
+        '201':
+          description: "Service created successfully"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Service"
+        '404':
+          description: "Service failed to add"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Service"
+
+  /service/getAllServices:
+    get:
+      summary: "Get all services"
+      tags: [service]
+      security:
+        - bearerAuth: []
+      produces:
+        - "application/json"
+      responses:
+        '200':
+          description: "Services retrieved successfully"
+          content:
+            application/json:
+              schema:
+                type: "object"
+                properties:
+                  status:
+                    type: "string"
+                    example: "success"
+                  data:
+                    type: "array"
+                    items:
+                      $ref: "#/components/schemas/Service"
+        '500':
+          description: "Internal Server Error"
+
+  /service/updateServiceById/{id}:
+    patch:
+      summary: "Update service by ID"
+      tags: [service]
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: "id"
+          in: "path"
+          required: true
+          type: "string"
+          description: "ID of the service to update"
+      consumes:
+        - "multipart/form-data"
+      produces:
+        - "application/json"
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: "object"
+              properties:
+                mainImage:
+                  type: "string"
+                  format: "binary"
+                  description: "Main image file for the service"
+                service_name:
+                  type: "string"
+                  description: "Name of the service"
+              
+      responses:
+        '200':
+          description: "Service updated successfully"
+          content:
+            application/json:
+              schema:
+                type: "object"
+                properties:
+                  status:
+                    type: "string"
+                    example: "success"
+                  message:
+                    type: "string"
+                    example: "Service updated successfully"
+                  data:
+                    $ref: "#/components/schemas/Service"
+        '404':
+          description: "Service not found"
+          content:
+            application/json:
+              schema:
+                type: "object"
+                properties:
+                  status:
+                    type: "string"
+                    example: "error"
+                  message:
+                    type: "string"
+                    example: "Service not found"
+        '500':
+          description: "Internal Server Error"
+
+
+  /service/deleteServiceById/{id}:
+    delete:
+      summary: "Delete service by ID"
+      tags: [service]
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: "id"
+          in: "path"
+          required: true
+          type: "string"
+          description: "ID of the service to delete"
+      produces:
+        - "application/json"
+      responses:
+        '200':
+          description: "Service deleted successfully"
+          content:
+            application/json:
+              schema:
+                type: "object"
+                properties:
+                  status:
+                    type: "string"
+                    example: "success"
+                  message:
+                    type: "string"
+                    example: "Service deleted successfully"
+                  data:
+                    $ref: "#/components/schemas/Service"
+        '404':
+          description: "Service not found"
+          content:
+            application/json:
+              schema:
+                type: "object"
+                properties:
+                  status:
+                    type: "string"
+                    example: "error"
+                  message:
+                    type: "string"
+                    example: "Service not found"
+        '500':
+          description: "Internal Server Error"
+
+  /portfolio/create:
+    post:
+      summary: 'Create Portfolio'
+      tags:
+        - 'Portfolio'
+      security:
+        - bearerAuth: []  
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                portfolioCategory:
+                  type: string
+                  example: "portfolio"
+                portfolioImages:
+                  type: array
+                  items:
+                    type: string
+                    format: binary
+                  description: 'Portfolio images for the new portfolio'
+                # Add other properties as needed for the portfolio creation
+              required:
+                - portfolioImages
+      responses:
+        '201':
+          description: 'Portfolio created successfully'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: "success"
+                  message:
+                    type: string
+                    example: "Portfolio created successfully"
+                  data:
+                    $ref: "#/components/schemas/Portfolio"
+
+  /portfolio/getAll:
+    get:
+      summary: 'Get all Portfolios'
+      tags:
+        - 'Portfolio'
+      security:
+        - bearerAuth: []  
+      responses:
+        '200':
+          description: 'Portfolios retrieved successfully'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: "success"
+                  message:
+                    type: string
+                    example: "All portfolios retrieved successfully"
+                  data:
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/Portfolio"
+
+  /portfolio/get/{id}:
+    get:
+      summary: 'Get Portfolio by ID'
+      tags:
+        - 'Portfolio'
+      security:
+        - bearerAuth: []  
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+          description: ID of the portfolio to be retrieved
+      responses:
+        '200':
+          description: 'Portfolio retrieved successfully'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: "success"
+                  message:
+                    type: string
+                    example: "Portfolio retrieved successfully"
+                  data:
+                    $ref: "#/components/schemas/Portfolio"
+        '404':
+          description: 'Portfolio not found'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: "error"
+                  message:
+                    type: string
+                    example: "Portfolio not found"
+
+  /portfolio/update/{id}:
+    patch:
+      summary: 'Update Portfolio by ID'
+      tags:
+        - 'Portfolio'
+      security:
+        - bearerAuth: []  
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+          description: ID of the portfolio to be updated
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                portfolioCategory:
+                   type: string
+                   example: "portfolio"
+                portfolioImages:
+                  type: array
+                  items:
+                    type: string
+                    format: binary
+                  description: 'New portfolio images for the updated portfolio'
+                # Add other properties as needed for the portfolio update
+              required:
+                - portfolioImages
+      responses:
+        '200':
+          description: 'Portfolio updated successfully'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: "success"
+                  message:
+                    type: string
+                    example: "Portfolio updated successfully"
+                  data:
+                    $ref: "#/components/schemas/Portfolio"
+        '404':
+          description: 'Portfolio not found'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: "error"
+                  message:
+                    type: string
+                    example: "Portfolio not found"
+
+  /portfolio/delete/{id}:
+    delete:
+      summary: 'Delete Portfolio by ID'
+      tags:
+        - 'Portfolio'
+      security:
+        - bearerAuth: []  
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+          description: ID of the portfolio to be deleted
+      responses:
+        '204':
+          description: 'Portfolio deleted successfully'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: "success"
+                  message:
+                    type: string
+                    example: "Portfolio deleted successfully"
+                  data: null
+        '404':
+          description: 'Portfolio not found'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: "error"
+                  message:
+                    type: string
+                    example: "Portfolio not found"
+  /class/getAllClasses:
+    get:
+      summary: "Get all classes"
+      tags: [Class]
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: "Classes retrieved successfully"
+          content:
+            application/json:
+              schema:
+                type: "object"
+                properties:
+                  status:
+                    type: "string"
+                    example: "success"
+                  message:
+                    type: "string"
+                    example: "All classes retrieved successfully"
+                  data:
+                    type: "array"
+                    items:
+                      $ref: "#/components/schemas/Class"
+  /class/getClassById/{id}:
+    get:
+      summary: "Get class by ID"
+      tags: [Class]
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: "id"
+          in: "path"
+          required: true
+          type: "string"
+          description: "ID of the class to retrieve"
+      responses:
+        '200':
+          description: "Class retrieved successfully"
+          content:
+            application/json:
+              schema:
+                type: "object"
+                properties:
+                  status:
+                    type: "string"
+                    example: "success"
+                  message:
+                    type: "string"
+                    example: "Class retrieved successfully"
+                  data:
+                    $ref: "#/components/schemas/Class"
+        '404':
+          description: "Class not found"
+          content:
+            application/json:
+              schema:
+                type: "object"
+                properties:
+                  status:
+                    type: "string"
+                    example: "error"
+                  message:
+                    type: "string"
+                    example: "Class not found"
+  /class/createClass:
+    post:
+      summary: "Create a class"
+      tags: [Class]
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: "object"
+              properties:
+                classTitle:
+                  type: "string"
+                  description: "Title of the class"
+                heading:
+                  type: "string"
+                  description: "Heading of the class"
+                description:
+                  type: "string"
+                  description: "Description of the class"
+                mainImage:
+                  type: "string"
+                  format: "binary"
+                  description: "Main image file for the class"
+              required:
+                - classTitle
+                - heading
+                - description
+                - mainImage
+      responses:
+        '201':
+          description: "Class created successfully"
+          content:
+            application/json:
+              schema:
+                type: "object"
+                properties:
+                  status:
+                    type: "string"
+                    example: "success"
+                  message:
+                    type: "string"
+                    example: "Class created successfully"
+                  data:
+                    $ref: "#/components/schemas/Class"
+  /class/updateClassById/{id}:
+    patch:
+      summary: "Update class by ID"
+      tags: [Class]
+      parameters:
+        - name: "id"
+          in: "path"
+          required: true
+          type: "string"
+          description: "ID of the class to update"
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: "object"
+              properties:
+                classTitle:
+                  type: "string"
+                  description: "Title of the class"
+                heading:
+                  type: "string"
+                  description: "Heading of the class"
+                description:
+                  type: "string"
+                  description: "Description of the class"
+                mainImage:
+                  type: "string"
+                  format: "binary"
+                  description: "Main image file for the class"
+              required:
+                - classTitle
+                - heading
+                - description
+                - mainImage
+      responses:
+        '200':
+          description: "Class updated successfully"
+          content:
+            application/json:
+              schema:
+                type: "object"
+                properties:
+                  status:
+                    type: "string"
+                    example: "success"
+                  message:
+                    type: "string"
+                    example: "Class updated successfully"
+                  data:
+                    $ref: "#/components/schemas/Class"
+        '404':
+          description: "Class not found"
+          content:
+            application/json:
+              schema:
+                type: "object"
+                properties:
+                  status:
+                    type: "string"
+                    example: "error"
+                  message:
+                    type: "string"
+                    example: "Class not found"
+  /class/deleteClassById/{id}:
+    delete:
+      summary: "Delete class by ID"
+      tags: [Class]
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: "id"
+          in: "path"
+          required: true
+          type: "string"
+          description: "ID of the class to delete"
+      responses:
+        '204':
+          description: "Class deleted successfully"
+          content:
+            application/json:
+              schema:
+                type: "object"
+                properties:
+                  status:
+                    type: "string"
+                    example: "success"
+                  message:
+                    type: "string"
+                    example: "Class deleted successfully"
+                  data: null
+        '404':
+          description: "Class not found"
+          content:
+            application/json:
+              schema:
+                type: "object"
+                properties:
+                  status:
+                    type: "string"
+                    example: "error"
+                  message:
+                    type: "string"
+                    example: "Class not found"
+  /contacts/createContact:
+    post:
+      summary: "Create Contact"
+      tags: [contacts]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Contact"
+      responses:
+        '201':
+          description: "Contact created successfully"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Contact"
+        '500':
+          description: "Internal Server Error"
+  
+  /contacts/getAllContacts:
+    get:
+      summary: "Get all Contacts"
+      tags: [contacts]
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: "Contacts retrieved successfully"
+          content:
+            application/json:
+              schema:
+                type: "array"
+                items:
+                  $ref: "#/components/schemas/Contact"
+  /contacts/getContactById/{id}:
+    get:
+      summary: "Get Contact by ID"
+      tags: [contacts]
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+          description: ID of the contact to be retrieved
+      responses:
+        '200':
+          description: "Contact retrieved successfully"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Contact"
+        '404':
+          description: "Contact not found"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        '500':
+          description: "Internal Server Error"
+  /contacts/updateContactById/{id}:
+    patch:
+      summary: "Update Contact by ID"
+      tags: [contacts]
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+          description: ID of the contact to be updated
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Contact"
+      responses:
+        '200':
+          description: "Contact updated successfully"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Contact"
+        '404':
+          description: "Contact not found"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        '500':
+          description: "Internal Server Error"
+  /contacts/deleteContactById/{id}:
+    delete:
+      summary: "Delete Contact by ID"
+      tags: [contacts]
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+          description: ID of the contact to be deleted
+      responses:
+        '204':
+          description: "Contact deleted successfully"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SuccessResponse"
+        '404':
+          description: "Contact not found"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        '500':
+          description: "Internal Server Error"
+  /contacts/deleteAllContacts:
+    delete:
+      summary: "Delete All Contacts"
+      tags: [contacts]
+      security:
+        - bearerAuth: []
+      responses:
+        '204':
+          description: "All Contacts deleted successfully"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SuccessResponse"
+        '500':
+          description: "Internal Server Error"
+  /contacts/replyToContactById/{id}:
+    patch:
+      summary: "Reply to Contact by ID"
+      tags: [contacts]
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+          description: ID of the contact to be replied
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                replysubject:
+                  type: string
+                reply:
+                  type: string
+              required:
+                - reply
+      responses:
+        '200':
+          description: "Contact replied successfully"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Contact"
+        '404':
+          description: "Contact not found"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        '500':
+          description: "Internal Server Error"
+  /team/createTeamMember:
+    post:
+      summary: "Create a Team Member"
+      tags: [team]
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+           multipart/form-data:
+            schema:
+              $ref: "#/components/schemas/TeamMember"
+      responses:
+        '201':
+          description: "Team Member created successfully"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/TeamMember"
+        '500':
+          description: "Internal Server Error"
+            
+  /team/getAllTeamMembers:
+    get:
+      summary: "Get All Team Members"
+      tags: [team]
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: "All Team Members retrieved successfully"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/TeamMember"
+        '500':
+          description: "Internal Server Error"
+  
+  /team/getTeamMemberById/{id}:
+    get:
+      summary: "Get Team Member by ID"
+      tags: [team]
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+          description: ID of the Team Member to be retrieved
+      responses:
+        '200':
+          description: "Team Member retrieved successfully"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/TeamMember"
+        '404':
+          description: "Team Member not found"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        '500':
+          description: "Internal Server Error"
+  
+  /team/updateTeamMemberById/{id}:
+    patch:
+      summary: "Update Team Member by ID"
+      tags: [team]
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+          description: ID of the Team Member to be updated
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/TeamMember"
+      responses:
+        '200':
+          description: "Team Member updated successfully"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/TeamMember"
+        '404':
+          description: "Team Member not found"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        '500':
+          description: "Internal Server Error"
+  
+  /team/deleteTeamMemberById/{id}:
+    delete:
+      summary: "Delete Team Member by ID"
+      tags: [team]
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+          description: ID of the Team Member to be deleted
+      responses:
+        '204':
+          description: "Team Member deleted successfully"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SuccessResponse"
+        '404':
+          description: "Team Member not found"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        '500':
+          description: "Internal Server Error"
+  
+  /team/deleteAllTeamMembers:
+    delete:
+      summary: "Delete All Team Members"
+      tags: [team]
+      security:
+        - bearerAuth: []
+      responses:
+        '204':
+          description: "All Team Members deleted successfully"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SuccessResponse"
+        '500':
+          description: "Internal Server Error"
+          
+  cmponents:
+  schemas:
+    
+  /partners/createPartner:
+    post:
+      summary: "Create a Partner"
+      tags: [partners]
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              $ref: "#/components/schemas/Partner"
+      responses:
+        '201':
+          description: "Partner created successfully"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Partner"
+        '500':
+          description: "Internal Server Error"        
+  /partners/getAllPartners:
+    get:
+      summary: "Get All Partners"
+      tags: [partners]
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: "All Partners retrieved successfully"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Partner"
+        '500':
+          description: "Internal Server Error"
+
+  /partners/getPartnerById/{id}:
+    get:
+      summary: "Get Partner by ID"
+      tags: [partners]
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+          description: ID of the Partner to be retrieved
+      responses:
+        '200':
+          description: "Partner retrieved successfully"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Partner"
+        '404':
+          description: "Partner not found"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        '500':
+          description: "Internal Server Error"
+
+  /partners/updatePartnerById/{id}:
+    patch:
+      summary: "Update Partner by ID"
+      tags: [partners]
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+          description: ID of the Partner to be updated
+      requestBody:
+        required: true
+        content:
+           multipart/form-data:
+            schema:
+              $ref: "#/components/schemas/Partner"
+      responses:
+        '200':
+          description: "Partner updated successfully"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Partner"
+        '404':
+          description: "Partner not found"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        '500':
+          description: "Internal Server Error"
+
+  /partners/deletePartnerById/{id}:
+    delete:
+      summary: "Delete Partner by ID"
+      tags: [partners]
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+          description: ID of the Partner to be deleted
+      responses:
+        '204':
+          description: "Partner deleted successfully"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SuccessResponse"
+        '404':
+          description: "Partner not found"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        '500':
+          description: "Internal Server Error"
+
+  /partners/deleteAllPartners:
+    delete:
+      summary: "Delete All Partners"
+      tags: [partners]
+      security:
+        - bearerAuth: []
+      responses:
+        '204':
+          description: "All Partners deleted successfully"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SuccessResponse"
+        '500':
+          description: "Internal Server Error"
+
+
+
+    
+  
+  
+  
+                    
+                 
+    
